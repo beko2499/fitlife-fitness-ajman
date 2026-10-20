@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 128" role="img" aria-labelledby="title desc">
+  <title id="title">FitLife Fitness</title>
+  <desc id="desc">The FitLife emblem: a white circular ring, angular white F and red check mark, with the italic FitLife Fitness wordmark.</desc>
+  <g transform="translate(-74 0) scale(.83)">
+    <circle cx="180" cy="77" r="58" fill="none" stroke="#fff" stroke-width="7"/>
+    <path d="M109 38H224L211 58H145L154 71H202L189 90H167L180 108L164 125Z" fill="#fff" stroke="#141414" stroke-width="3.5" stroke-linejoin="miter"/>
+    <path d="M162 113L178 96L188 111L231 38H251L188 144Z" fill="#ef332f" stroke="#141414" stroke-width="3.5" stroke-linejoin="miter"/>
+  </g>
+  <g transform="translate(155 41) skewX(-12)">
+    <g fill="#fff">
+      <path d="M0 0H38V9H12V15H34V24H12V36H0Z"/>
+      <path d="M43 0H55V36H43Z"/>
+      <path d="M60 0H101V10H87V36H74V10H60Z"/>
+    </g>
+    <g fill="#ef332f">
+      <path d="M106 0H119V26H143V36H106Z"/>
+      <path d="M148 0H161V36H148Z"/>
+      <path d="M167 0H205V9H179V15H201V24H179V36H167Z"/>
+      <path d="M210 0H250V9H222V14H247V22H222V27H250V36H210Z"/>
+    </g>
+  </g>
+  <g transform="translate(211 90)" fill="#fff">
+    <path d="M0 0H14V3H4V6H13V9H4V15H0Z"/>
+    <path d="M20 0H24V15H20Z"/>
+    <path d="M30 0H46V3H40V15H36V3H30Z"/>
+    <path d="M52 0H56L63 9V0H67V15H63L56 6V15H52Z"/>
+    <path d="M74 0H89V3H78V6H88V9H78V12H89V15H74Z"/>
+    <path d="M98 0H111V3H100V6H108L112 9V12L109 15H96V12H108V9H100L96 6V3Z"/>
+    <path d="M121 0H134V3H123V6H131L135 9V12L132 15H119V12H131V9H123L119 6V3Z"/>
+  </g>
+</svg>
