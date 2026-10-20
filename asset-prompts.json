@@ -1,0 +1,11 @@
+{
+  "mode": "built-in image_gen",
+  "hero": {
+    "path": "dist/assets/fitlife-hero.png",
+    "prompt": "Use case: identity-preserve. Asset type: full-width FitLife website hero photograph. Image 1 is the target identity, the real adult woman from the user. Image 2 is the generated composition to revise. Correct the woman's identity in Image 2 to match the woman in Image 1. Replace her face, facial shape and hairline so that she is recognizably the adult woman in Image 1. Carefully preserve Image 1's exact oval face proportions, prominent long straight nose, eyes and brows, cheekbones, fuller lips, warm medium-brown skin tone, dark hair pulled back and natural athletic build. Show her looking right with a determined expression, lips relaxed and closed. Identity reference Image 1 is paramount. Keep Image 2's 3:2 horizontal crop, pose, shoulder and bent arm across foreground gripping kettlebell, pale gray sports tank, crimson-red motion-blurred studio background, moving ponytail, realistic sweat and dramatic sports editorial lighting. Natural realistic anatomy and skin texture. Photography only, no text, logo, watermark or interface."
+  },
+  "training": {
+    "path": "dist/assets/fitlife-training.png",
+    "prompt": "A cinematic premium gym interior with a fit male trainer wearing a simple deep red athletic top, standing naturally in the center foreground near free weights. Spacious dark charcoal gym, rows of dumbbells and strength machines, black rubber floors, overhead silver industrial lighting. Realistic 35mm editorial photograph, natural skin texture and proportions, rich contrast. Horizontal 3:2 landscape, suitable for portrait crop, waist-to-thigh framing. Soft overhead light, subtle highlights, deep shadows. Black, charcoal and deep red palette. No text, logos, watermarks or brand marks."
+  }
+}
