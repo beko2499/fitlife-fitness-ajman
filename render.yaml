@@ -1,0 +1,40 @@
+# Render Blueprint: publishes dist/ as a free static site. No build step is needed.
+# One-click setup: https://render.com/deploy?repo=https://github.com/beko2499/fitlife-fitness-ajman
+services:
+  - type: web
+    runtime: static
+    name: fitlife-fitness-ajman
+    branch: main
+    autoDeployTrigger: commit
+    buildCommand: echo "Static site, nothing to build"
+    staticPublishPath: ./dist
+    envVars:
+      - key: SKIP_INSTALL_DEPS
+        value: "true"
+    headers:
+      # Page, styles and script are rechecked on every visit so updates show up right away.
+      - path: /
+        name: Cache-Control
+        value: no-cache
+      - path: /*.html
+        name: Cache-Control
+        value: no-cache
+      - path: /*.css
+        name: Cache-Control
+        value: no-cache
+      - path: /*.js
+        name: Cache-Control
+        value: no-cache
+      # Images and fonts rarely change, so browsers may keep them for a week.
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=604800
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
