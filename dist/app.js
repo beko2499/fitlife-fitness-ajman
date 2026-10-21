@@ -53,6 +53,84 @@
       }
     };
 
+    const splash = $('#splash');
+    if (splash) {
+      let entered = false;
+      let loaded = document.readyState === 'complete';
+      let leaving = false;
+      const leave = () => {
+        if (leaving) return;
+        leaving = true;
+        lockScroll('splash', false);
+        document.documentElement.classList.add('splash-reveal');
+        splash.classList.add('is-leaving');
+        const remove = () => splash.remove();
+        splash.querySelector('.splash-curtain-red')?.addEventListener('animationend', remove, { once: true });
+        setTimeout(remove, reducedMotion() ? 0 : 1400);
+      };
+      const ready = () => {
+        if (entered && loaded) setTimeout(leave, 150);
+      };
+      const markEntered = () => {
+        entered = true;
+        ready();
+      };
+      const canvas = splash.querySelector('.splash-halftone');
+      const context = canvas?.getContext('2d');
+      if (context) {
+        const clamp = (value) => Math.min(1, Math.max(0, value));
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        const pitch = Math.max(9, Math.min(15, Math.min(width, height) / 64));
+        canvas.width = Math.round(width * ratio);
+        canvas.height = Math.round(height * ratio);
+        context.scale(ratio, ratio);
+        context.fillStyle = 'rgba(196, 94, 66, .42)';
+        const dots = [];
+        for (let x = (width / 2) % pitch; x < width; x += pitch) {
+          for (let y = (height / 2) % pitch; y < height; y += pitch) {
+            const distance = Math.hypot((x - width / 2) / width, (y - height / 2) / height) * 1.6;
+            const falloff = 1 - clamp((distance - 0.22) / 0.85);
+            const size = falloff ** 1.5 * (0.3 + 0.7 * clamp((distance - 0.08) / 0.2));
+            if (size > 0) dots.push([x, y, distance, size]);
+          }
+        }
+        // Run on the same clock as the CSS logo animation so the halftone pulse lands with the check mark.
+        const clock = splash.querySelector('.splash-logo')?.getAnimations?.()[0];
+        const origin = performance.now() - (Number(clock?.currentTime) || 0);
+        const draw = (now) => {
+          if (!splash.isConnected) return;
+          const time = reducedMotion() ? Infinity : now - origin;
+          context.clearRect(0, 0, width, height);
+          context.beginPath();
+          dots.forEach(([x, y, distance, size]) => {
+            const shown = 1 - (1 - clamp((time - 100 - distance * 700) / 500)) ** 3;
+            const pulse = time > 980 && time < 2200
+              ? Math.exp(-(((distance - (time - 980) / 600) / 0.1) ** 2)) * (1 - (time - 980) / 1220)
+              : 0;
+            const radius = pitch * 0.47 * size * shown * (1 + 0.55 * pulse);
+            if (radius > 0.3) {
+              context.moveTo(x + radius, y);
+              context.arc(x, y, radius, 0, Math.PI * 2);
+            }
+          });
+          context.fill();
+          if (time < 2200) requestAnimationFrame(draw);
+        };
+        draw(performance.now());
+      }
+
+      lockScroll('splash', true);
+      if (reducedMotion()) setTimeout(markEntered, 600);
+      else splash.querySelector('.splash-glint')?.addEventListener('animationend', markEntered, { once: true });
+      if (!loaded) window.addEventListener('load', () => {
+        loaded = true;
+        ready();
+      }, { once: true });
+      setTimeout(leave, 4500);
+    }
+
     if (menu && menuButton) {
       menuButton.setAttribute('aria-expanded', String(!menu.hidden));
       menuButton.addEventListener('click', () => setMenu(menu.hidden));

@@ -1,6 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-  <rect width="160" height="160" rx="25" fill="#101313"/>
-  <circle cx="80" cy="78" r="54" fill="none" stroke="#fff" stroke-width="6"/>
-  <path d="M14 42H121L109 60H48L56 72H100L88 90H68L80 107L65 123Z" fill="#fff" stroke="#101313" stroke-width="3"/>
-  <path d="M63 112L78 96L87 110L127 42H146L87 141Z" fill="#ef332f" stroke="#101313" stroke-width="3"/>
+  <defs>
+    <path id="emblem-f" d="M-77.4-48.4H52.8L37.9-25.6H-39.5L-30.5-11.5H28.8L14.4 10.7H-15.9L-11.4 19.5L-22.7 37Z"/>
+    <path id="emblem-check" d="M57.5-48.4H79.7L-1.2 76.1L-20.5 40.7L-10.9 26.1L.9 38.6Z"/>
+    <mask id="emblem-ring-mask" maskUnits="userSpaceOnUse" x="-90" y="-90" width="180" height="180">
+      <rect x="-90" y="-90" width="180" height="180" fill="#fff"/>
+      <g stroke="#000" stroke-width="8.8" stroke-linejoin="round"><use href="#emblem-f"/><use href="#emblem-check"/></g>
+      <rect x="-90" y="-57" width="180" height="10"/>
+    </mask>
+  </defs>
+  <rect width="160" height="160" rx="25" fill="#121110"/>
+  <g transform="translate(80 80) scale(.92)">
+    <circle r="70.5" fill="none" stroke="#fff" stroke-width="9" mask="url(#emblem-ring-mask)"/>
+    <use href="#emblem-f" fill="#fff"/>
+    <use href="#emblem-check" fill="#ea3f2e"/>
+  </g>
 </svg>

@@ -14,9 +14,24 @@
   <link rel="preload" href="assets/chakra-bold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fitlife-hero.png" as="image" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
+  <noscript><style>.splash{display:none}</style></noscript>
   <script src="app.js" defer></script>
 </head>
 <body>
+  <div class="splash" id="splash" aria-hidden="true">
+    <div class="splash-curtain splash-curtain-red"></div>
+    <div class="splash-curtain splash-curtain-dark">
+      <canvas class="splash-halftone"></canvas>
+      <div class="splash-mark">
+        <div class="splash-logo">
+          <svg class="splash-ring" viewBox="-82 -79 164 158"><defs><mask id="splash-ring-mask" maskUnits="userSpaceOnUse" x="-90" y="-90" width="180" height="180"><rect x="-90" y="-90" width="180" height="180" fill="#fff"/><g stroke="#000" stroke-width="8.8" stroke-linejoin="round"><path d="M-77.4-48.4H52.8L37.9-25.6H-39.5L-30.5-11.5H28.8L14.4 10.7H-15.9L-11.4 19.5L-22.7 37Z"/><path d="M57.5-48.4H79.7L-1.2 76.1L-20.5 40.7L-10.9 26.1L.9 38.6Z"/></g><rect x="-90" y="-57" width="180" height="10"/></mask></defs><g mask="url(#splash-ring-mask)"><circle r="70.5" pathLength="100"/></g></svg>
+          <svg class="splash-f" viewBox="-82 -79 164 158"><path d="M-77.4-48.4H52.8L37.9-25.6H-39.5L-30.5-11.5H28.8L14.4 10.7H-15.9L-11.4 19.5L-22.7 37Z"/></svg>
+          <svg class="splash-check" viewBox="-82 -79 164 158"><path d="M57.5-48.4H79.7L-1.2 76.1L-20.5 40.7L-10.9 26.1L.9 38.6Z"/></svg>
+          <svg class="splash-shine" viewBox="-82 -79 164 158"><defs><clipPath id="splash-check-clip"><path d="M57.5-48.4H79.7L-1.2 76.1L-20.5 40.7L-10.9 26.1L.9 38.6Z"/></clipPath><linearGradient id="splash-shine-gradient"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><g clip-path="url(#splash-check-clip)"><rect class="splash-glint" x="-82" y="-79" width="26" height="158" fill="url(#splash-shine-gradient)"/></g></svg>
+        </div>
+      </div>
+    </div>
+  </div>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="site-shell">
     <section class="hero" id="home" aria-label="FitLife Fitness">
