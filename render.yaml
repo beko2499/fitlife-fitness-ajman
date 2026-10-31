@@ -1,4 +1,5 @@
-# Render Blueprint: publishes dist/ as a free static site. No build step is needed.
+# Render Blueprint: publishes dist/ as a free static site. The build only regenerates the
+# coach profile pages from coaches.json, using Node with no dependencies.
 # One-click setup: https://render.com/deploy?repo=https://github.com/beko2499/fitlife-fitness-ajman
 services:
   - type: web
@@ -6,7 +7,7 @@ services:
     name: fitlife-fitness-ajman
     branch: main
     autoDeployTrigger: commit
-    buildCommand: echo "Static site, nothing to build"
+    buildCommand: node tools/build-coach-pages.mjs
     staticPublishPath: ./dist
     envVars:
       - key: SKIP_INSTALL_DEPS

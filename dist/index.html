@@ -58,6 +58,8 @@
     <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></symbol>
     <symbol id="i-whatsapp" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 20.5l1.4-4.2A8.5 8.5 0 1 1 8.6 19Z"/><path d="M9.2 8.2c-.4 2.9 3.4 6.8 6.6 6.6l.9-1.5-2-1.1-1 .9a5 5 0 0 1-2.8-2.8l.9-1-1.1-2Z"/></g></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></g></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13l11-6.5Z"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M4 12h16M14 6l6 6-6 6"/></symbol>
     <symbol id="i-dumbbell" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6.5 7v10M3.5 9.5v5M17.5 7v10M20.5 9.5v5M6.5 12h11"/></symbol>
     <symbol id="i-trophy" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M8 4h8v5a4 4 0 0 1-8 0ZM8 6H5a3 3 0 0 0 3.3 4.2M16 6h3a3 3 0 0 1-3.3 4.2M12 13v4M8.5 21h7M9.5 17h5v4h-5Z"/></symbol>
@@ -144,51 +146,52 @@
     <section class="trainers" id="trainers" aria-roledescription="carousel" aria-labelledby="trainers-title">
       <div class="container trainers-head">
         <h2 class="section-label light" id="trainers-title">Our trainers</h2>
-        <p class="trainer-count" aria-live="polite"><span id="trainer-index">01</span> / 03</p>
+        <div class="trainer-tools">
+          <a class="trainer-profile" id="trainer-profile" href="coach-strength.html">View profile <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <span class="trainer-progress" aria-hidden="true"><i></i></span>
+          <p class="trainer-count" aria-live="off"><span id="trainer-index">01</span> / 03</p>
+          <button class="trainer-play" id="trainer-play" type="button" aria-label="Pause trainer slideshow"><svg class="icon-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="icon-play" aria-hidden="true"><use href="#i-play"/></svg></button>
+        </div>
       </div>
       <div class="container trainer-mobile">
-        <strong id="trainer-role">Strength coach</strong>
+        <a class="trainer-role" id="trainer-role" href="coach-strength.html">Strength coach <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <button class="btn btn-red" id="trainer-book" data-join data-goal="Build strength &amp; muscle">Book now <span aria-hidden="true">+</span></button>
       </div>
-      <div class="trainer-stage" tabindex="0" aria-label="Trainers. Swipe or use the arrow keys to see the next trainer.">
+      <div class="trainer-stage" tabindex="0" aria-label="Trainers. Swipe or use the arrow keys to see the next trainer, and press Enter to open their profile.">
         <div class="trainer-shape" aria-hidden="true"></div>
-        <!-- Placeholder silhouettes: replace each .trainer-figure <use> with the trainer's cut-out photo when it is ready. -->
-        <article class="trainer-slide is-active" aria-roledescription="slide" aria-label="1 of 3: Strength coach" data-role="Strength coach" data-goal="Build strength &amp; muscle">
+        <article class="trainer-slide is-active" aria-roledescription="slide" aria-label="1 of 3: Strength coach" data-coach="strength" data-href="coach-strength.html" data-role="Strength coach" data-goal="Build strength &amp; muscle">
           <div class="trainer-word is-back" aria-hidden="true"><p><span>S</span><span class="b">T</span><span>R</span><span>E</span><span>N</span><span>G</span><span class="b">T</span><span>H</span></p></div>
           <div class="trainer-word is-front" aria-hidden="true"><p><span>S</span><span class="b">T</span><span>R</span><span>E</span><span>N</span><span>G</span><span class="b">T</span><span>H</span></p></div>
           <svg class="trainer-art" viewBox="0 0 1072 520">
             <g class="trainer-lines"><polyline points="304,290 324,270 482,270"/><polyline points="362,419 486,419"/><polyline points="798,322 700,322 640,300"/><polyline points="759,446 680,446 646,390"/></g>
             <g class="trainer-ends"><circle cx="482" cy="270" r="3"/><circle cx="486" cy="419" r="3"/><circle cx="640" cy="300" r="3"/><circle cx="646" cy="390" r="3"/></g>
-            <use class="trainer-shade" href="#sil-strength" x="392" y="23" width="288" height="496"/>
-            <use class="trainer-figure" href="#sil-strength" x="392" y="15" width="288" height="496"/>
+            <image class="trainer-figure" href="assets/trainers/strength-v2.webp" x="372" y="0" width="328" height="520" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Strength coach holding a kettlebell"/>
             <a class="trainer-badge" href="#join" data-join data-goal="Build strength &amp; muscle" aria-label="Book a session with a strength coach"><circle cx="270" cy="320" r="42"/><text x="270" y="311">Strength</text><text x="270" y="324">coach</text><text class="badge-cta" x="270" y="341">Book now +</text></a>
             <g class="hotspot" tabindex="0" role="img" aria-label="Body building" transform="translate(344 419)"><g class="hotspot-body"><circle r="17"/><use href="#i-dumbbell" x="-9" y="-9" width="18" height="18"/></g><text class="hotspot-label" x="-27" y="4" text-anchor="end">Body building</text></g>
             <g class="hotspot" tabindex="0" role="img" aria-label="Competition training" transform="translate(816 322)"><g class="hotspot-body"><circle r="17"/><use href="#i-trophy" x="-9" y="-9" width="18" height="18"/></g><text class="hotspot-label" x="27" y="4">Competition training</text></g>
             <g class="hotspot" tabindex="0" role="img" aria-label="Weight gaining" transform="translate(777 446)"><g class="hotspot-body"><circle r="17"/><use href="#i-scale" x="-9" y="-9" width="18" height="18"/></g><text class="hotspot-label" x="27" y="4">Weight gaining</text></g>
           </svg>
         </article>
-        <article class="trainer-slide" style="--word-m:27.5" aria-roledescription="slide" aria-label="2 of 3: Cardio coach" data-role="Cardio coach" data-goal="Cardio &amp; group fitness">
+        <article class="trainer-slide" style="--word-m:27.5" aria-roledescription="slide" aria-label="2 of 3: Cardio coach" data-coach="cardio" data-href="coach-cardio.html" data-role="Cardio coach" data-goal="Cardio &amp; group fitness">
           <div class="trainer-word is-back" aria-hidden="true"><p><span>C</span><span class="b">A</span><span>R</span><span>D</span><span class="b">I</span><span>O</span></p></div>
           <div class="trainer-word is-front" aria-hidden="true"><p><span>C</span><span class="b">A</span><span>R</span><span>D</span><span class="b">I</span><span>O</span></p></div>
           <svg class="trainer-art" viewBox="0 0 1072 520">
             <g class="trainer-lines"><polyline points="304,290 324,270 476,270"/><polyline points="362,419 470,419"/><polyline points="798,250 704,250 652,184"/><polyline points="759,446 680,446 608,420"/></g>
             <g class="trainer-ends"><circle cx="476" cy="270" r="3"/><circle cx="470" cy="419" r="3"/><circle cx="652" cy="184" r="3"/><circle cx="608" cy="420" r="3"/></g>
-            <use class="trainer-shade" href="#sil-cardio" x="392" y="23" width="288" height="496"/>
-            <use class="trainer-figure" href="#sil-cardio" x="392" y="15" width="288" height="496"/>
+            <image class="trainer-figure" href="assets/trainers/cardio-v2.webp" x="372" y="0" width="328" height="520" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Female cardio coach in modest loose long-sleeve sportswear"/>
             <a class="trainer-badge" href="#join" data-join data-goal="Cardio &amp; group fitness" aria-label="Book a session with a cardio coach"><circle cx="270" cy="320" r="42"/><text x="270" y="311">Cardio</text><text x="270" y="324">coach</text><text class="badge-cta" x="270" y="341">Book now +</text></a>
             <g class="hotspot" tabindex="0" role="img" aria-label="Group aerobics" transform="translate(344 419)"><g class="hotspot-body"><circle r="17"/><use href="#i-group" x="-9" y="-9" width="18" height="18"/></g><text class="hotspot-label" x="-27" y="4" text-anchor="end">Group aerobics</text></g>
             <g class="hotspot" tabindex="0" role="img" aria-label="Cardio training" transform="translate(816 250)"><g class="hotspot-body"><circle r="17"/><use href="#i-pulse" x="-9" y="-9" width="18" height="18"/></g><text class="hotspot-label" x="27" y="4">Cardio training</text></g>
             <g class="hotspot" tabindex="0" role="img" aria-label="Zumba" transform="translate(777 446)"><g class="hotspot-body"><circle r="17"/><use href="#i-music" x="-9" y="-9" width="18" height="18"/></g><text class="hotspot-label" x="27" y="4">Zumba</text></g>
           </svg>
         </article>
-        <article class="trainer-slide" aria-roledescription="slide" aria-label="3 of 3: Personal trainer" data-role="Personal trainer" data-goal="Personal training">
+        <article class="trainer-slide" aria-roledescription="slide" aria-label="3 of 3: Personal trainer" data-coach="coaching" data-href="coach-coaching.html" data-role="Personal trainer" data-goal="Personal training">
           <div class="trainer-word is-back" aria-hidden="true"><p><span>C</span><span class="b">O</span><span>A</span><span>C</span><span>H</span><span>I</span><span class="b">N</span><span>G</span></p></div>
           <div class="trainer-word is-front" aria-hidden="true"><p><span>C</span><span class="b">O</span><span>A</span><span>C</span><span>H</span><span>I</span><span class="b">N</span><span>G</span></p></div>
           <svg class="trainer-art" viewBox="0 0 1072 520">
             <g class="trainer-lines"><polyline points="304,290 324,268 458,268"/><polyline points="362,419 489,419"/><polyline points="798,322 700,322 624,272"/><polyline points="759,446 660,446 588,420"/></g>
             <g class="trainer-ends"><circle cx="458" cy="268" r="3"/><circle cx="489" cy="419" r="3"/><circle cx="624" cy="272" r="3"/><circle cx="588" cy="420" r="3"/></g>
-            <use class="trainer-shade" href="#sil-coach" x="392" y="23" width="288" height="496"/>
-            <use class="trainer-figure" href="#sil-coach" x="392" y="15" width="288" height="496"/>
+            <image class="trainer-figure" href="assets/trainers/coaching-v2.webp" x="372" y="0" width="328" height="520" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Personal trainer with arms comfortably folded"/>
             <a class="trainer-badge" href="#join" data-join data-goal="Personal training" aria-label="Book a session with a personal trainer"><circle cx="270" cy="320" r="42"/><text x="270" y="311">Personal</text><text x="270" y="324">trainer</text><text class="badge-cta" x="270" y="341">Book now +</text></a>
             <g class="hotspot" tabindex="0" role="img" aria-label="Diet and nutrition" transform="translate(344 419)"><g class="hotspot-body"><circle r="17"/><use href="#i-apple" x="-9" y="-9" width="18" height="18"/></g><text class="hotspot-label" x="-27" y="4" text-anchor="end">Diet &amp; nutrition</text></g>
             <g class="hotspot" tabindex="0" role="img" aria-label="Personal training" transform="translate(816 322)"><g class="hotspot-body"><circle r="17"/><use href="#i-clipboard" x="-9" y="-9" width="18" height="18"/></g><text class="hotspot-label" x="27" y="4">Personal training</text></g>

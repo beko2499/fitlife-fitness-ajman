@@ -282,9 +282,49 @@
     if (stage) {
       const slides = [...stage.querySelectorAll('.trainer-slide')];
       const indexLabel = $('#trainer-index');
-      const roleLabel = $('#trainer-role');
+      const countLabel = indexLabel?.parentElement;
+      const roleLink = $('#trainer-role');
+      const profileLink = $('#trainer-profile');
       const book = $('#trainer-book');
+      const progress = trainers.querySelector('.trainer-progress');
+      const playButton = $('#trainer-play');
+      // Each trainer holds for two seconds after its 0.8 s entrance, then the next one comes in.
+      const DWELL = 2800;
       let current = Math.max(0, slides.findIndex((slide) => slide.classList.contains('is-active')));
+      let playing = false;
+      let timer = null;
+      let remaining = DWELL;
+      let startedAt = 0;
+      let userPaused = false;
+      let hovering = false;
+      let touching = false;
+      let visible = false;
+
+      const restartProgress = () => {
+        if (!progress) return;
+        progress.classList.remove('is-running');
+        void progress.offsetWidth;
+        progress.classList.add('is-running');
+      };
+      const keyboardFocused = () => stage.matches(':focus-visible') || Boolean(stage.querySelector(':focus-visible'));
+      const canPlay = () => slides.length > 1 && !userPaused && !hovering && !touching && visible &&
+        !document.hidden && !keyboardFocused() && !reducedMotion();
+      const advance = () => show(current + 1, 1);
+      const syncAutoplay = () => {
+        const shouldPlay = canPlay();
+        if (shouldPlay === playing) return;
+        playing = shouldPlay;
+        trainers.classList.toggle('is-playing', playing);
+        countLabel?.setAttribute('aria-live', playing ? 'off' : 'polite');
+        clearTimeout(timer);
+        if (playing) {
+          startedAt = performance.now();
+          timer = setTimeout(advance, remaining);
+        } else {
+          remaining = Math.max(0, remaining - (performance.now() - startedAt));
+        }
+      };
+
       const show = (index, direction) => {
         const next = (index + slides.length) % slides.length;
         if (next === current) return;
@@ -292,19 +332,63 @@
         slides[current].classList.remove('is-active');
         slides[next].classList.add('is-active');
         current = next;
+        const slide = slides[next];
         if (indexLabel) indexLabel.textContent = String(next + 1).padStart(2, '0');
-        if (roleLabel) roleLabel.textContent = slides[next].dataset.role || '';
-        if (book) book.dataset.goal = slides[next].dataset.goal || '';
+        if (roleLink) {
+          roleLink.firstChild.nodeValue = `${slide.dataset.role || ''} `;
+          roleLink.href = slide.dataset.href || '#trainers';
+        }
+        if (profileLink) profileLink.href = slide.dataset.href || '#trainers';
+        if (book) book.dataset.goal = slide.dataset.goal || '';
+        remaining = DWELL;
+        restartProgress();
+        if (playing) {
+          clearTimeout(timer);
+          startedAt = performance.now();
+          timer = setTimeout(advance, DWELL);
+        }
       };
+      const openProfile = () => {
+        const href = slides[current].dataset.href;
+        if (href) window.location.assign(href);
+      };
+
       stage.querySelector('.trainer-arrow.prev')?.addEventListener('click', () => show(current - 1, -1));
       stage.querySelector('.trainer-arrow.next')?.addEventListener('click', () => show(current + 1, 1));
       stage.addEventListener('keydown', (event) => {
         if (event.target !== stage) return;
         if (event.key === 'ArrowLeft') show(current - 1, -1);
         else if (event.key === 'ArrowRight') show(current + 1, 1);
+        else if (event.key === 'Enter') openProfile();
         else return;
         event.preventDefault();
       });
+      playButton?.addEventListener('click', () => {
+        userPaused = !userPaused;
+        trainers.classList.toggle('is-user-paused', userPaused);
+        playButton.setAttribute('aria-label', userPaused ? 'Play trainer slideshow' : 'Pause trainer slideshow');
+        syncAutoplay();
+      });
+      stage.addEventListener('pointerenter', (event) => {
+        if (event.pointerType !== 'mouse') return;
+        hovering = true;
+        syncAutoplay();
+      });
+      stage.addEventListener('pointerleave', () => {
+        hovering = false;
+        syncAutoplay();
+      });
+      stage.addEventListener('focusin', syncAutoplay);
+      stage.addEventListener('focusout', () => setTimeout(syncAutoplay));
+      document.addEventListener('visibilitychange', syncAutoplay);
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([entry]) => {
+          visible = entry.isIntersecting;
+          syncAutoplay();
+        }, { threshold: 0.35 }).observe(stage);
+      } else {
+        visible = true;
+      }
 
       let startX = null;
       let dragged = 0;
@@ -314,11 +398,20 @@
         stage.classList.remove('is-dragging');
         stage.style.removeProperty('--drag');
         if (Math.abs(dragged) > 50) show(current + (dragged < 0 ? 1 : -1), dragged < 0 ? 1 : -1);
+        if (touching) {
+          touching = false;
+          remaining = DWELL;
+          syncAutoplay();
+        }
       };
       stage.addEventListener('pointerdown', (event) => {
         if (event.button !== 0 || event.target.closest('button')) return;
         startX = event.clientX;
         dragged = 0;
+        if (event.pointerType !== 'mouse') {
+          touching = true;
+          syncAutoplay();
+        }
       });
       stage.addEventListener('pointermove', (event) => {
         if (startX === null) return;
@@ -343,13 +436,19 @@
       stage.addEventListener('pointerup', endDrag);
       stage.addEventListener('pointercancel', endDrag);
       stage.addEventListener('lostpointercapture', endDrag);
-      // A drag must not also count as a click on the badge or a hotspot.
+      // A drag must not also count as a click; a plain click on the trainer opens their profile.
       stage.addEventListener('click', (event) => {
-        if (Math.abs(dragged) <= 8) return;
-        event.preventDefault();
-        event.stopPropagation();
-        dragged = 0;
+        if (Math.abs(dragged) > 8) {
+          event.preventDefault();
+          event.stopPropagation();
+          dragged = 0;
+          return;
+        }
+        if (!event.target.closest('a, button, .hotspot')) openProfile();
       }, true);
+
+      restartProgress();
+      syncAutoplay();
     }
 
     const planTrack = $('#plan-track');

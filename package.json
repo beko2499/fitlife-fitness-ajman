@@ -1,1 +1,1 @@
-{"name":"fitlife-fitness","version":"1.0.0","private":true,"description":"FitLife Fitness Ajman website","scripts":{"dev":"node preview.mjs","check":"node --check dist/app.js"}}
+{"name":"fitlife-fitness","version":"1.0.0","private":true,"description":"FitLife Fitness Ajman website","scripts":{"dev":"node preview.mjs","build":"node tools/build-coach-pages.mjs","check":"node --check dist/app.js"}}

@@ -1,0 +1,187 @@
+{
+  "preview": true,
+  "steps": [
+    {
+      "icon": "i-clipboard",
+      "title": "Goal check",
+      "text": "Tell your coach what you want to achieve and where you are starting from."
+    },
+    {
+      "icon": "i-apple",
+      "title": "Your plan",
+      "text": "Training built around your goal, with nutrition guidance when you need it."
+    },
+    {
+      "icon": "i-dumbbell",
+      "title": "Train",
+      "text": "Sessions at your pace, with your coach checking your technique and form."
+    },
+    {
+      "icon": "i-trophy",
+      "title": "Progress",
+      "text": "Track how you are doing and adjust the plan as you get stronger."
+    }
+  ],
+  "coaches": [
+    {
+      "id": "strength",
+      "name": "",
+      "role": "Strength coach",
+      "word": "Strength",
+      "figure": "sil-strength",
+      "goal": "Build strength & muscle",
+      "specialties": [
+        "Body building",
+        "Weight gaining",
+        "Competition training"
+      ],
+      "bio": [
+        "Strength coach at FitLife Fitness in Al Bustan, Ajman.",
+        "Works with members on body building, weight gaining and competition preparation, building strength one session at a time."
+      ],
+      "stats": [
+        {
+          "value": "",
+          "label": "Years coaching"
+        },
+        {
+          "value": "",
+          "label": "Members coached"
+        },
+        {
+          "value": "",
+          "label": "Competitions"
+        },
+        {
+          "value": "",
+          "label": "Certifications"
+        }
+      ],
+      "memberResults": [
+        {
+          "title": "",
+          "result": "",
+          "story": ""
+        },
+        {
+          "title": "",
+          "result": "",
+          "story": ""
+        },
+        {
+          "title": "",
+          "result": "",
+          "story": ""
+        }
+      ],
+      "photo": "assets/trainers/strength-v2.webp"
+    },
+    {
+      "id": "cardio",
+      "name": "",
+      "role": "Cardio coach",
+      "word": "Cardio",
+      "figure": "sil-cardio",
+      "goal": "Cardio & group fitness",
+      "specialties": [
+        "Cardio training",
+        "Weight losing",
+        "Group aerobics",
+        "Zumba"
+      ],
+      "bio": [
+        "Cardio coach at FitLife Fitness in Al Bustan, Ajman.",
+        "Leads cardio training, group aerobics and Zumba, and helps members lose weight with an active routine they enjoy."
+      ],
+      "stats": [
+        {
+          "value": "",
+          "label": "Years coaching"
+        },
+        {
+          "value": "",
+          "label": "Members coached"
+        },
+        {
+          "value": "",
+          "label": "Classes a week"
+        },
+        {
+          "value": "",
+          "label": "Certifications"
+        }
+      ],
+      "memberResults": [
+        {
+          "title": "",
+          "result": "",
+          "story": ""
+        },
+        {
+          "title": "",
+          "result": "",
+          "story": ""
+        },
+        {
+          "title": "",
+          "result": "",
+          "story": ""
+        }
+      ],
+      "photo": "assets/trainers/cardio-v2.webp"
+    },
+    {
+      "id": "coaching",
+      "name": "",
+      "role": "Personal trainer",
+      "word": "Coaching",
+      "figure": "sil-coach",
+      "goal": "Personal training",
+      "specialties": [
+        "Personal training",
+        "Diet nutritional",
+        "Time management"
+      ],
+      "bio": [
+        "Personal trainer at FitLife Fitness in Al Bustan, Ajman.",
+        "Builds one-to-one plans around each member's goal, with diet guidance and a training schedule that fits their day."
+      ],
+      "stats": [
+        {
+          "value": "",
+          "label": "Years coaching"
+        },
+        {
+          "value": "",
+          "label": "Members coached"
+        },
+        {
+          "value": "",
+          "label": "Plans written"
+        },
+        {
+          "value": "",
+          "label": "Certifications"
+        }
+      ],
+      "memberResults": [
+        {
+          "title": "",
+          "result": "",
+          "story": ""
+        },
+        {
+          "title": "",
+          "result": "",
+          "story": ""
+        },
+        {
+          "title": "",
+          "result": "",
+          "story": ""
+        }
+      ],
+      "photo": "assets/trainers/coaching-v2.webp"
+    }
+  ]
+}
